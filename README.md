@@ -12,4 +12,4 @@ The app needs a picture of the answered sheet to compare it with each solved tes
 
 The results of the graded tests are shown in a new window:
 
-![GitHub Logo](imagen_demo 2.jpg)
+![GitHub Logo](imagen_demo2.jpg)
