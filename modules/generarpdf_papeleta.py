@@ -25,13 +25,13 @@ def generar_pdf(inicio, final, inombre, ifecha, imateria, icarnet, formato_path,
     
     if(inombre == True):
         #incluir el campo para colocar el nombre 8080
-        nombreTexto = "Nombre: "
+        nombreTexto = "Name: "
         dibujoFormato.text((14, 22), nombreTexto,
                            font=tituloFont, fill=(0, 0, 0))
 
     if(ifecha == True):
             #incluir el campo para colocar el nombre 8080
-            fechaTexto = "Fecha: "
+            fechaTexto = "Date: "
             dibujoFormato.text((400, 22), fechaTexto, 
                                font=tituloFont, fill=(0, 0, 0))
     
@@ -39,14 +39,14 @@ def generar_pdf(inicio, final, inombre, ifecha, imateria, icarnet, formato_path,
     if(icarnet == True):
             #incluir el campo para colocar el nombre 8080
             nA, nL = dibujoFormato.textsize(nombreTexto, font=tituloFont)
-            carnetTexto = "Carnet: "
+            carnetTexto = "Student #: "
             dibujoFormato.text((14, (22+nL*1.5)), carnetTexto, 
                                font=tituloFont, fill=(0, 0, 0))
     
     if(imateria == True):
             #incluir el campo para colocar el nombre 8080
             nA, nL = dibujoFormato.textsize(nombreTexto, font=tituloFont)
-            materiaTexto = "Materia: "
+            materiaTexto = "Subject: "
             dibujoFormato.text((400, (22+nL*1.5)), materiaTexto, 
                                font=tituloFont, fill=(0, 0, 0))
     

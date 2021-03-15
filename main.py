@@ -4,8 +4,8 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QWidget, QFileDialog, QPushButton 
 from PyQt5.QtCore import pyqtSignal
 
-from models.primerainterfaz import Ui_MainWindow, Ui_Form_papeleta, Ui_Form_variosExam, Ui_Form_DatosVarios
-from models import generarpdf_papeleta, procesador_examenes
+from modules.primerainterfaz import Ui_MainWindow, Ui_Form_papeleta, Ui_Form_variosExam, Ui_Form_DatosVarios
+from modules import generarpdf_papeleta, procesador_examenes
 
 import sys
 
@@ -22,7 +22,7 @@ class window_tablaVarios(QtWidgets.QMainWindow):
         
         self.ui.tableWidget.setColumnCount(5)
         self.ui.tableWidget.setRowCount(2)
-        self.ui.tableWidget.setHorizontalHeaderLabels(('ID', 'Datos', 'Nota', 'Calificación', 'Tipo'))
+        self.ui.tableWidget.setHorizontalHeaderLabels(('ID', 'Info', 'Grade', 'Grading', 'Type'))
         header = self.ui.tableWidget.horizontalHeader()
         header.setSectionResizeMode(0, QtWidgets.QHeaderView.ResizeToContents)
         header.setSectionResizeMode(2, QtWidgets.QHeaderView.ResizeToContents)
@@ -30,14 +30,14 @@ class window_tablaVarios(QtWidgets.QMainWindow):
         respuestas, nid, examen, datos, contornos_r = procesador_examenes.procesar_examen(file_respuesta)
         nota_r, examen = procesador_examenes.obtener_nota(respuestas, respuestas, contornos_r, examen)        
             
-        self.mostrar_respuestas = QPushButton('Mostrar', self)
-        self.mostrar_datos = QPushButton('Mostrar', self)
+        self.mostrar_respuestas = QPushButton('Show', self)
+        self.mostrar_datos = QPushButton('Show', self)
         
         self.ui.tableWidget.setItem(0, 0, QtWidgets.QTableWidgetItem(nid))
         self.ui.tableWidget.setCellWidget(0, 1, self.mostrar_datos)
         self.ui.tableWidget.setItem(0, 2, QtWidgets.QTableWidgetItem("N/A"))
         self.ui.tableWidget.setCellWidget(0, 3, self.mostrar_respuestas)
-        self.ui.tableWidget.setItem(0, 4, QtWidgets.QTableWidgetItem("Solución"))
+        self.ui.tableWidget.setItem(0, 4, QtWidgets.QTableWidgetItem("Answer sheet"))
         
         self.btmostrar = []
         self.btdatos = []
@@ -45,8 +45,8 @@ class window_tablaVarios(QtWidgets.QMainWindow):
         self.datos = []
         for i in range(len(files_examenes)):
             fila = i+1
-            self.btn = QPushButton('Mostrar', self)
-            self.btnb = QPushButton('Mostrar', self)
+            self.btn = QPushButton('Show', self)
+            self.btnb = QPushButton('Show', self)
             self.ui.tableWidget.insertRow(fila)
             self.ui.tableWidget.setCellWidget(fila, 1, self.btn)
             self.ui.tableWidget.setCellWidget(fila, 3, self.btnb)
@@ -62,20 +62,20 @@ class window_tablaVarios(QtWidgets.QMainWindow):
             self.imagenes.append(examenb)
             self.ui.tableWidget.setItem(fila, 0, QtWidgets.QTableWidgetItem(nidb))
             self.ui.tableWidget.setItem(fila, 2, QtWidgets.QTableWidgetItem("{}".format(nota)))
-            self.ui.tableWidget.setItem(fila, 4, QtWidgets.QTableWidgetItem("Contestado"))
+            self.ui.tableWidget.setItem(fila, 4, QtWidgets.QTableWidgetItem("Answered"))
            
         self.mostrar_respuestas.clicked.connect(lambda: self.ver_respuestas(examen))
         self.mostrar_datos.clicked.connect(lambda: self.ver_datos_respuestas(datos))
         self.trigger.emit()
         
     def ver_respuestas(self, examen):
-        procesador_examenes.mostrar_imagen("Respuestas encontradas", examen)
+        procesador_examenes.mostrar_imagen("Answers found", examen)
     def ver_datos_respuestas(self, datos):
-        procesador_examenes.mostrar_imagen("Datos del examen", datos)
+        procesador_examenes.mostrar_imagen("Test's info", datos)
     def mostrar_respectivo(self, num):
-        procesador_examenes.mostrar_imagen("Examen del alumno", self.imagenes[num])
+        procesador_examenes.mostrar_imagen("Student's answers", self.imagenes[num])
     def mostrar_respectivo_datos(self, num):
-        procesador_examenes.mostrar_imagen("Info del alumno", self.datos[num])
+        procesador_examenes.mostrar_imagen("Student's info", self.datos[num])
     def closeEvent(self, event):
         self.closing.emit()
         event.accept()
@@ -100,12 +100,12 @@ class window_variosExam(QtWidgets.QMainWindow):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
         fileName, _ = QFileDialog.getOpenFileName(self,
-            "Abrir foto de respuestas", 
-            "Archivo respuestas",
+            "Open answer-sheet",
+            "Answer file",
             "Images (*.png *.xpm *.jpg)", options=options)
         if fileName:
             self.fileName = fileName
-            self.ui.label_4.setText("Cargado")
+            self.ui.label_4.setText("Loaded")
             self.ui.pushButton_2.setEnabled(True)
             self.ui.pushButton_3.setEnabled(True)
     
@@ -117,7 +117,7 @@ class window_variosExam(QtWidgets.QMainWindow):
                             "","Images (*.png *.xpm *.jpg)", options=options)
         if files:
             self.files = files
-            self.ui.label_5.setText("Cargado")
+            self.ui.label_5.setText("Loaded")
             self.ui.progressBar.setEnabled(True)
     
     def calificar_examenes(self):
@@ -154,7 +154,7 @@ class window_papeleta(QWidget):
     def generarPDF(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","imprimir.pdf","PDF (*.pdf)", options=options)
+        fileName, _ = QFileDialog.getSaveFileName(self,"QFileDialog.getSaveFileName()","print.pdf","PDF (*.pdf)", options=options)
 
         self.ui.progressBar.setProperty("value", 50)
         limite_inicial = self.ui.spinBox.value()
@@ -181,9 +181,9 @@ class window_papeleta(QWidget):
         else:
             icarnet = False
         
-        formato = "recursos/imagenes/formato.png"
-        fuente_titulo = "recuersos/fuentes/monoglyceride.bold.ttf"
-        fuente_numero = "recursos/Shahd_Serif.ttf"
+        formato = "resources/images/base_format.png"
+        fuente_titulo = "resources/fonts/monoglyceride.bold.ttf"
+        fuente_numero = "resources/fonts/Shahd_Serif.ttf"
         completado = generarpdf_papeleta.generar_pdf(limite_inicial, limite_final, inombre,
                                         ifecha, imateria, icarnet, formato, fuente_titulo, fuente_numero, fileName)
         

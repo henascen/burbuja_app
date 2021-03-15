@@ -48,16 +48,16 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Principal"))
-        self.pushButton.setText(_translate("MainWindow", "Calificar \n"
-"varios \n"
-"exámenes"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Main window"))
+        self.pushButton.setText(_translate("MainWindow", "Grade \n"
+"multiple \n"
+"tests"))
         #self.pushButton_2.setText(_translate("MainWindow", "Calificar \n"
 #"solo un \n"
 #"examen"))
-        self.pushButton_3.setText(_translate("MainWindow", "Crear\n"
-"plantilla de \n"
-"papeletas"))
+        self.pushButton_3.setText(_translate("MainWindow", "Create\n"
+"test sheet \n"
+"template"))
 
 class Ui_Form_papeleta(object):
     def setupUi(self, Form):
@@ -103,15 +103,15 @@ class Ui_Form_papeleta(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Crear papeletas"))
-        self.label.setText(_translate("Form", "Id. inicial"))
-        self.label_2.setText(_translate("Form", "Id. final"))
-        self.pushButton.setText(_translate("Form", "Generar PDF"))
-        self.label_3.setText(_translate("Form", "Incluir espacio para:"))
-        self.checkBox.setText(_translate("Form", "Nombre:"))
-        self.checkBox_2.setText(_translate("Form", "Fecha:"))
-        self.checkBox_3.setText(_translate("Form", "Materia:"))
-        self.checkBox_4.setText(_translate("Form", "Carnet:"))
+        Form.setWindowTitle(_translate("Form", "Create test sheets"))
+        self.label.setText(_translate("Form", "Initial ID"))
+        self.label_2.setText(_translate("Form", "Final ID"))
+        self.pushButton.setText(_translate("Form", "Generate PDF"))
+        self.label_3.setText(_translate("Form", "Blank spaces for:"))
+        self.checkBox.setText(_translate("Form", "Name:"))
+        self.checkBox_2.setText(_translate("Form", "Date:"))
+        self.checkBox_3.setText(_translate("Form", "Subject:"))
+        self.checkBox_4.setText(_translate("Form", "Student #:"))
         
 class Ui_Form_variosExam(object):
     def setupUi(self, Form):
@@ -170,15 +170,15 @@ class Ui_Form_variosExam(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Calificar varios"))
-        self.pushButton.setText(_translate("Form", "Subir examen \n"
-"con respuestas"))
+        Form.setWindowTitle(_translate("Form", "Grade multiple tests"))
+        self.pushButton.setText(_translate("Form", "Upload \n"
+"answer sheet"))
         self.label.setText(_translate("Form", "N° 1"))
         self.label_2.setText(_translate("Form", "N° 2"))
-        self.pushButton_2.setText(_translate("Form", "Subir exámenes \n"
-"a calificar"))
+        self.pushButton_2.setText(_translate("Form", "Upload tests \n"
+"to grade"))
         self.label_3.setText(_translate("Form", "N° 3"))
-        self.pushButton_3.setText(_translate("Form", "Calificar examenes"))
+        self.pushButton_3.setText(_translate("Form", "Grade tests"))
 
 class Ui_Form_DatosVarios(object):
     def setupUi(self, Form):
@@ -201,4 +201,4 @@ class Ui_Form_DatosVarios(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Datos obtenidos"))
+        Form.setWindowTitle(_translate("Form", "Results"))
