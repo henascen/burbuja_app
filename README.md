@@ -11,19 +11,32 @@ The type of tests targeted by this apps are standardized tests. These are a good
 *Currently the app only supports grading tests that include 40 questions for scale.*
 
 ## The Burbuja app interface:
-- The main menu
+- **The main menu**
+
 ![](/resources/images/main_window.png)
-- The grade tests menu
+
+- **The grade tests menu**
+
 ![](/resources/images/multiplegrading_allgraded.png)
-- The create test sheets window
+
+- **The create test sheets window**
+
 ![](/resources/images/template_creation.png)
-- An example of an answer sheet read by the app:
-![](/resources/images/encontrado_marcada10_eng.png)
-- An example of a solved test before processing:
-![](/resources/images/grayscale_eng.png)
-- Example of the result after processing and grading the solved test:
-![](/resources/images/base_format.png)
-- The results window:
+
+- **An example of an answer sheet read by the app**
+
+![](/resources/images/encontrado_marcada10_eng.jpg)
+
+- **An example of a solved test before processing**
+
+![](/resources/images/grayscale_eng.jpg)
+
+- **Example of the result after processing and grading the solved test**
+
+![](/resources/images/gradint_one_test.png)
+
+- **The results window**
+
 ![](/resources/images/results_window.png)
 
 ## Requirements:
