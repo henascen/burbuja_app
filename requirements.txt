@@ -8,6 +8,6 @@ pyinstaller==3.6
 pytesseract==0.3.4
 scipy==1.4.1
 PyQt5==5.14.2 
-sqlparse==0.3.1
+sqlparse==0.4.4
 
 
